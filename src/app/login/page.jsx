@@ -23,6 +23,7 @@ export default function Login() {
     if (info.error) {
       return setError(info.error);
     }
+    console.log(info);
     router.push("/");
     router.refresh();
   }
@@ -58,7 +59,7 @@ export default function Login() {
           Sign Up
         </a>
       </p>
-      <button class="google-button">Sign in with Google</button>
+      <button className="google-button">Sign in with Google</button>
     </div>
   );
 }

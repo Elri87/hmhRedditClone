@@ -1,21 +1,27 @@
+//This component to return a link tag
+
 "use client";
 
+import Link from "next/link.js";
 import { useRouter } from "next/navigation.js";
-import Login from "../login/page.jsx";
 
 export default function Logout() {
+  const router = useRouter();
+
   async function handleLogout() {
     const response = await fetch("/api/users/logout", {
       method: "POST",
     });
     const info = await response.json();
-    Router.refresh();
+    //router.push("/api/users/login");
+    router.refresh();
   }
 
   return (
-    <div>
-      <Login />
-    </div>
+    <Link onClick={handleLogout} href={"/login"}>
+      Logout
+    </Link>
   );
 }
-//router.push("/");
+
+//href={"/api/users/login"}

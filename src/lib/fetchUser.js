@@ -7,18 +7,20 @@ export async function fetchUser() {
   try {
     //check if there is a cookie
     const cookieStore = cookies();
+    //console.log(cookieStore);
     //const { value } = cookieStore.get("token"); //token is cookie name
     const userCookie = cookieStore.get("token");
     if (!userCookie) {
       return {};
     }
     //Decode the token
-    const decodedToken = jwt.verify(userCookie.value, process.env.JWT_SECRET);
+    const { userId } = jwt.verify(userCookie.value, process.env.JWT_SECRET);
+    //const decodedToken = jwt.verify(userCookie.value, process.env.JWT_SECRET);
     //determine if token is valid
-    const { userId } = decodedToken;
+    //const { userId } = decodedToken;
 
     //send request to db to fetch this user
-    const user = prisma.user.findFirst({ where: { id: userId } });
+    const user = await prisma.user.findFirst({ where: { id: userId } });
     delete user.password;
     return user;
   } catch (error) {

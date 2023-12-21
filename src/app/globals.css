@@ -323,3 +323,16 @@ hr {
   align-items: center;
   gap: 15px;
 }
+
+/*SUBREDDITS*/
+
+.subreddits-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #8d8c8c;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
