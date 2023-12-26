@@ -1,7 +1,7 @@
 //Because we need user for many different things in application we can write a function to use on a few components. set cookies to send down the jwt token
 import { prisma } from "./prisma.js";
 import { cookies } from "next/headers.js"; // check this, if created in route.js users
-import { jwt } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 export async function fetchUser() {
   try {
@@ -10,6 +10,7 @@ export async function fetchUser() {
     //console.log(cookieStore);
     //const { value } = cookieStore.get("token"); //token is cookie name
     const userCookie = cookieStore.get("token");
+    //console.log(userCookie);
     if (!userCookie) {
       return {};
     }

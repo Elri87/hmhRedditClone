@@ -1,40 +1,36 @@
 import Link from "next/link.js";
 import { fetchUser } from "@/lib/fetchUser.js";
+
 import Logout from "./Logout.jsx";
 
 import Image from "next/image.js";
 import redditLogo from "../assets/img/redditRoundLogo.png";
-import hmhLogo from "../assets/img/hackmyheadLogo.png";
 
 export default async function Navbar() {
   const user = await fetchUser();
 
-  //console.log(user.username);
+  //console.log(user);
 
   return (
     <div className="navbar">
       <div>
-        <Image className="redditLogo" src={redditLogo} alt="Reddit Logo" />
+        <Link href={"/"}>
+          <Image className="redditLogo" src={redditLogo} alt="Reddit Logo" />
+        </Link>
       </div>
-      <div>
-        <span>Welcome {user.username}</span>
-      </div>
+
       <div className="search-bar">
         <p className="search-icon">🔍</p>
         <input type="text" className="search-input" placeholder="Search" />
       </div>
       <div className="navbar-right">
-        <Link href={"/"}>Home</Link>
-        <Link href={"/subreddits"}>Subreddits</Link>
-        <Logout />
-
-        {user.id && (
+        {!user.id && (
           <>
             <Link href={"/login"}>Login</Link>
             <Link href={"/register"}>Register</Link>
           </>
         )}
-        {!user.id && (
+        {user.id && (
           <>
             <span>Welcome {user.username}</span>
             <Logout />

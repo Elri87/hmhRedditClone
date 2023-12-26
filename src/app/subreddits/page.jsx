@@ -7,7 +7,10 @@ export default async function Subreddits() {
   console.log(subreddits);
   return (
     <div className="subreddits-container">
-      <h4>Subreddits</h4>
+      <div>
+        <button className="create-subreddit-button">Create a Subreddit</button>
+      </div>
+
       {subreddits.map((subreddit) => (
         <div key={subreddit.id}>
           <Link href={`/subreddits/${subreddit.id}`}>{subreddit.name}</Link>

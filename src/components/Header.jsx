@@ -1,3 +1,5 @@
+import Link from "next/link.js";
+
 import Image from "next/image.js";
 import headerLogo from "../assets/img/hackmyheadLogo.png";
 
@@ -13,8 +15,11 @@ export default function Header() {
 
           <p>r/hackmyhead</p>
         </div>
-        <div>
-          <button className="header-button">Joined</button>
+        <div className="header-buttons">
+          <Link href={"/subreddits"} className="header-button">
+            Subreddits
+          </Link>
+          <button className="joined-button">Joined</button>
         </div>
       </div>
       <hr />
