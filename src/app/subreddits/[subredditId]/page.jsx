@@ -7,3 +7,5 @@ export default function Subreddit({ params }) {
     </div>
   );
 }
+
+//individual subredit with it's own posts

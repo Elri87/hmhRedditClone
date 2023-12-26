@@ -10,7 +10,7 @@ export async function fetchUser() {
     //console.log(cookieStore);
     //const { value } = cookieStore.get("token"); //token is cookie name
     const userCookie = cookieStore.get("token");
-    //console.log(userCookie);
+    console.log(userCookie);
     if (!userCookie) {
       return {};
     }
