@@ -12,7 +12,7 @@ export default async function handleVote(postId, voteType) {
     if (vote) {
       return { success: true, message: "Vote successful" };
     } else {
-      return { success: false, error: "Failed to create vote" };
+      return { success: false, error: "Failed, vote not created" };
     }
   } catch (error) {
     return { success: false, error: error.message };
