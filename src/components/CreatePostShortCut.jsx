@@ -1,12 +1,10 @@
-import { FaRegUserCircle } from "react-icons/fa";
+import Link from "next/link.js";
 
 export default function CreatePostShortCut() {
   return (
     <div className="createPostShortCut">
-      <FaRegUserCircle />
+      <p>👤</p>
       <button className="createPostShortCut-button">Create Post</button>
-      <p>👤</p>
-      <p>👤</p>
     </div>
   );
 }

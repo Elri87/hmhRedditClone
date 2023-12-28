@@ -1,5 +1,4 @@
 import Link from "next/link.js";
-
 import Image from "next/image.js";
 import headerLogo from "../assets/img/hackmyheadLogo.png";
 
