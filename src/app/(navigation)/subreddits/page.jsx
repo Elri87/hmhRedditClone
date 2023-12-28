@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma.js";
 import Link from "next/link.js";
 //import Subreddit from "./[subredditId]/page.jsx";
-import CreateSubreddit from "../../components/Subreddit.jsx";
+import CreateSubreddit from "../../../components/Subreddit.jsx";
 
 export default async function Subreddits() {
   // fetch directly from the db
