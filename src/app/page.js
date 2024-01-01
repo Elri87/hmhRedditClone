@@ -10,7 +10,6 @@ export default function Home() {
       <Header />
       <CreatePostShortCut />
       <PostedItem />
-      <Posts />
     </div>
   );
 }

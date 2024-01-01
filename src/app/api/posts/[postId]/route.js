@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma.js";
 import { NextResponse } from "next/server.js";
 
-export async function GET(request, response) {
+/*export async function GET(request, response) {
   try {
     const { postId } = response.params;
     const post = await prisma.post.findFirst({
@@ -71,4 +71,4 @@ export async function DELETE(request, response) {
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message });
   }
-}
+}*/

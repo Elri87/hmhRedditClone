@@ -1,4 +1,4 @@
-import styles from "@/app/page.module.css";
+/*import styles from "@/app/page.module.css";
 import { prisma } from "@/lib/prisma.js";
 
 export default async function postPage() {
@@ -48,4 +48,4 @@ export default async function postPage() {
       ))}
     </div>
   );
-}
+}*/

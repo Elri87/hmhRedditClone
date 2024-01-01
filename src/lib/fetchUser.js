@@ -22,11 +22,14 @@ export async function fetchUser() {
 
     //send request to db to fetch this user
     const user = await prisma.user.findFirst({ where: { id: userId } });
-    
-    delete user.password;
+
+    if (user) {
+      delete user.password;
+    }
+
     return user;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     return {};
   }
 }
