@@ -1,29 +1,47 @@
 //POST to create a post
-
 import { prisma } from "@/lib/prisma.js";
 import { NextResponse } from "next/server.js";
+import { fetchUser } from "@/lib/fetchUser.js";
 
-//POST - api/posts
-
-/*GET Title
-export default async function GET() {
-  const title = await prisma.post.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
-  return NextResponse.json({ success: true, title });
-}*/
-
-//POST
-export default async function postHandler(req, res) {
+//POST - api/post
+export async function POST(req, res) {
   try {
-    if (req.method === "POST") {
-      const posts = await prisma.post.findMany();
-      res.json(posts);
-    } else {
+    const { title, message, subredditId, parentId } = await request.json();
+
+    if (!message) {
+      return NextResponse.json({
+        success: false,
+        error: "You did not provide a message to post",
+      });
     }
-    return NextResponse.json({ success: true, message: "Post is successful" });
+
+    if (!subredditId) {
+      return NextResponse.json({
+        success: false,
+        error: "You did not provide a subreddit to post",
+      });
+    }
+
+    const user = await fetchUser();
+
+    if (!user.id) {
+      return NextResponse.json({
+        success: false,
+        error: "You must be logged in to post!",
+      });
+    }
+
+    const post = await prisma.post.create({
+      data: {
+        title,
+        message,
+        parentId,
+        userId: user.id,
+        subredditId,
+      },
+    });
+
+    return NextResponse.json({ success: true, post });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message });
   }
