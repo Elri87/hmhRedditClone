@@ -1,7 +1,7 @@
 //This page is for the subreddits to show on the UI
 import { prisma } from "@/lib/prisma.js";
 import Link from "next/link.js";
-import CreateSubreddit from "../../../components/Subreddit.jsx";
+import CreateSubreddit from "../../../components/CreateSubreddit.jsx";
 import { fetchUser } from "@/lib/fetchUser.js";
 
 export default async function Subreddits() {
@@ -17,6 +17,7 @@ export default async function Subreddits() {
   return (
     <section>
       <h4>Subreddits</h4>
+      <CreateSubreddit checkUser={user.id} />
 
       {subreddits.map((subreddit) => {
         return (
@@ -29,16 +30,6 @@ export default async function Subreddits() {
           </Link>
         );
       })}
-
-      <Link
-        href={"/subreddits"}
-        src="/subreddits"
-        className="create-subreddit-button"
-      >
-        Create a Subreddit
-      </Link>
-
-      <CreateSubreddit checkUser={user.id} />
     </section>
   );
 }

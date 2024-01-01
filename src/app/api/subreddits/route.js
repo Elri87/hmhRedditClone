@@ -11,7 +11,7 @@ import { NextResponse } from "next/server.js";
   return NextResponse.json({ success: true, name });
 }*/
 
-export default async function POST(req, res) {
+export async function POST(req, res) {
   try {
     const { name } = await req.json();
     //const user = await fetchUser();

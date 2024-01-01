@@ -374,9 +374,22 @@ hr {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid black;
+  border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 500px;
-  background-color: white;
+  background-color: #f0f0f0;
+  border: 1px solid #8d8c8c;
   padding: 30px;
+  border-radius: 5px;
+}
+
+.subreddit-input {
+  background-color: #f8f3f3;
+  border-radius: 5px;
+  height: 30px;
+  width: 150px;
+}
+
+.create-subreddit-buttons {
+  margin: 5px;
 }
