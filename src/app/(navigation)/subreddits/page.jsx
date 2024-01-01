@@ -1,6 +1,6 @@
+//This page is for the subreddits to show on the UI
 import { prisma } from "@/lib/prisma.js";
 import Link from "next/link.js";
-//import Subreddit from "./[subredditId]/page.jsx";
 import CreateSubreddit from "../../../components/Subreddit.jsx";
 import { fetchUser } from "@/lib/fetchUser.js";
 
@@ -11,19 +11,8 @@ export default async function Subreddits() {
       createdAt: "desc",
     },
   });
-  /*{
-    include: {
-      posts: {
-        where: {
-          parentId: null,
-        },
-      },
-    },
-  }*/
-  //console.log(subreddits);
 
-  //sort the subreddits
-  //subreddits.sort((a,b) => a.name.localeCompare(b.name));
+  const user = await fetchUser();
 
   return (
     <section>
@@ -36,7 +25,6 @@ export default async function Subreddits() {
             key={subreddit.id}
             className="subreddits-container"
           >
-            {subreddit.name}
             <p>r/ {subreddit.name}</p>
           </Link>
         );
