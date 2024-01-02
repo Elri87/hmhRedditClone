@@ -16,7 +16,7 @@ export default async function Subreddits() {
 
   return (
     <section>
-      <h4>Subreddits</h4>
+      <h2>Subreddits</h2>
       <CreateSubreddit checkUser={user.id} />
 
       {subreddits.map((subreddit) => {

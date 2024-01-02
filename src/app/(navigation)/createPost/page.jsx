@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma.js";
 import { fetchUser } from "@/lib/fetchUser.js";
+import CreateNewPost from "@/components/CreateNewPost.jsx";
 
 export default async function createPost() {
   const user = await fetchUser();
@@ -16,48 +17,7 @@ export default async function createPost() {
     <section>
       <h4>Create a post</h4>
       <hr />
+      <CreateNewPost checkUser={user.id} subreddits={subreddits} />
     </section>
   );
 }
-
-/*<section>
-      <h4>Create a post</h4>
-      <hr />
-        <div>
-          <p>👤</p>
-        </div>
-        <div>
-          <input type="text" placeholder="Create a Post" />
-        </div>
-      
-
-      {posts.map((post) => (
-        <div key={post.id}>
-          <div>
-            <div key={post.id}>
-              <button>⬆️</button>
-              {post.votes || 0}
-              <button>⬇️</button>
-            </div>
-          </div>
-
-          <div>
-            <div>{post.title}</div>
-
-            {post.user && <div>{post.user.username}</div>}
-
-            <div>{post.message}</div>
-
-            <div>
-              <div>
-                <p>💬 # Comments</p>
-              </div>
-
-              <div>
-                <p>Created: {post.createdAt.toLocaleDateString()}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </section>*/
