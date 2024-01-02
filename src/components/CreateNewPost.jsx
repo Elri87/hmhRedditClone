@@ -43,10 +43,10 @@ export default function CreateNewPost({ checkUser, subreddits }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="newPost-container">
       <h4>Create a post</h4>
       <hr />
-      <div className="select-subredit-container">
+      <div>
         <select
           name="subreddits"
           required
@@ -62,8 +62,9 @@ export default function CreateNewPost({ checkUser, subreddits }) {
           ))}
         </select>
       </div>
-      <div>
+      <div className="newPostForm">
         <input
+          className="newPostInput"
           required
           type="text"
           placeholder="Create a Title"
@@ -73,6 +74,7 @@ export default function CreateNewPost({ checkUser, subreddits }) {
           }}
         />
         <textarea
+          className="newPostTextArea"
           required
           name="message"
           placeholder="Text"
@@ -82,7 +84,9 @@ export default function CreateNewPost({ checkUser, subreddits }) {
           }}
         ></textarea>
         <hr />
-        <button type="submit">Post</button>
+        <button className="create-post-button" type="submit">
+          Post
+        </button>
       </div>
     </form>
   );

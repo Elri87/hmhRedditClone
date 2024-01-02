@@ -393,3 +393,41 @@ hr {
 .create-subreddit-buttons {
   margin: 5px;
 }
+
+.newPost-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  background-color: #f0f0f0;
+  border: 1px solid #8d8c8c;
+  padding: 30px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+hr {
+  color: black;
+}
+
+select {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.newPostForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.newPostInput {
+  height: 20px;
+  width: 230px;
+}
+
+.create-post-button {
+  width: 100px;
+  border-radius: 5px;
+}

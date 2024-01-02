@@ -15,8 +15,6 @@ export default async function createPost() {
 
   return (
     <section>
-      <h4>Create a post</h4>
-      <hr />
       <CreateNewPost checkUser={user.id} subreddits={subreddits} />
     </section>
   );
