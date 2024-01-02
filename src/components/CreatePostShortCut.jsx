@@ -1,15 +1,23 @@
 import Link from "next/link.js";
 import CreateNewPost from "./CreateNewPost.jsx";
+import { fetchUser } from "@/lib/fetchUser.js";
+import { prisma } from "@/lib/prisma.js";
 
-export default function CreatePostShortCut() {
+export default async function CreatePostShortCut() {
+  const user = await fetchUser();
+
+  const subreddits = await prisma.subreddit.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
   return (
     <div className="createPostShortCut">
       <p>👤</p>
 
-      <Link href={"/posts"} className="createPostShortCut-button">
-        Create Post
+      <Link href={"/createPost"} className="createPostShortCut-button">
+        <button>Create Post</button>
       </Link>
-      <CreateNewPost />
     </div>
   );
 }

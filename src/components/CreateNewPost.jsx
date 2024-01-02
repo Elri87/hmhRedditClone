@@ -2,24 +2,11 @@
 import { useRouter } from "next/navigation.js";
 import { useState } from "react";
 
-export default function CreateNewPost() {
-  return (
-    <section>
-      <h4>Create a post</h4>
-      <hr />
-
-      <div>
-        <input type="text" placeholder="Create a Post" />
-      </div>
-    </section>
-  );
-}
-
-/*export default function CreateNewPost({ checkUser, subreddits }) {
+export default function CreateNewPost({ checkUser, subreddits }) {
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
+  const [selectOption, setSelectOption] = useState("");
   const [error, setError] = useState("");
-  const [optionSelect, setOptionSelect] = useState("");
 
   const router = useRouter();
 
@@ -32,26 +19,83 @@ export default function CreateNewPost() {
     }
 
     //fetch posts from api
-    if (optionSelect && title && message) {
+    if (selectOption && title && message) {
       const res = await fetch("/api/posts", {
         method: "POST",
         body: JSON.stringify({
           title: title,
           message: message,
-          subredditId: optionSelect,
+          subredditId: selectOption,
         }),
       });
+
       const data = await res.json();
+      //console.log(data);
 
       if (data.error) {
         return setError(data.error);
       } else {
-        router.push(`/subreddits/${optionSelect}`);
+        router.push(`/subreddits/${selectOption}`);
       }
     } else {
       setError("You need to choose a subreddit & create a title + message");
     }
   }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h4>Create a post</h4>
+      <hr />
+      <div className="select-subredit-container">
+        <select
+          name="subreddits"
+          required
+          value={selectOption}
+          onChange={(e) => {
+            setSelectOption(e.target.value);
+          }}
+        >
+          {subreddits.map((subreddit) => (
+            <option value={subreddit.id} key={subreddit.name}>
+              r/ {subreddit.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <input
+          required
+          type="text"
+          placeholder="Create a Title"
+          value={title}
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+        />
+        <textarea
+          required
+          name="message"
+          placeholder="Text"
+          value={message}
+          onChange={(e) => {
+            setMessage(e.target.value);
+          }}
+        ></textarea>
+        <hr />
+        <button type="submit">Post</button>
+      </div>
+    </form>
+  );
+}
+
+/*export default function CreateNewPost({ checkUser, subreddits }) {
+ 
+  const [optionSelect, setOptionSelect] = useState("");
+
+  
+
+  
+
 
   return (
     <form onSubmit={handleSubmit}>
