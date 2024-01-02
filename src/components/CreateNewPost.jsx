@@ -2,26 +2,54 @@
 import { useRouter } from "next/navigation.js";
 import { useState } from "react";
 
-export default function CreateNewPost({ subreddits }) {
+export default function CreateNewPost() {
+  return (
+    <section>
+      <h4>Create a post</h4>
+      <hr />
+
+      <div>
+        <input type="text" placeholder="Create a Post" />
+      </div>
+    </section>
+  );
+}
+
+/*export default function CreateNewPost({ checkUser, subreddits }) {
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [optionSelect, setOptionSelect] = useState("");
 
   const router = useRouter();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (title && message) {
+    //check user is logged in before making a post
+    if (!checkUser) {
+      return setError("You need to be logged in to make a post");
+    }
+
+    //fetch posts from api
+    if (optionSelect && title && message) {
       const res = await fetch("/api/posts", {
         method: "POST",
         body: JSON.stringify({
           title: title,
           message: message,
-          //subredditId
+          subredditId: optionSelect,
         }),
       });
       const data = await res.json();
+
+      if (data.error) {
+        return setError(data.error);
+      } else {
+        router.push(`/subreddits/${optionSelect}`);
+      }
+    } else {
+      setError("You need to choose a subreddit & create a title + message");
     }
   }
 
@@ -39,7 +67,7 @@ export default function CreateNewPost({ subreddits }) {
       </div>
     </form>
   );
-}
+}*/
 
 /*<section>
       <h4>Create a post</h4>

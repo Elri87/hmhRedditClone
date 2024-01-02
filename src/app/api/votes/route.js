@@ -1,20 +1,65 @@
 import { prisma } from "@/lib/prisma.js";
+import { fetchUser } from "@/lib/fetchUser.js";
+import { NextResponse } from "next/server.js";
 
-export default async function handleVote(postId, voteType) {
+export async function POST(request, response) {
   try {
-    const vote = await prisma.vote.create({
-      data: {
+    const { postId, isUpvote } = await request.json();
+    const { id } = await fetchUser();
+
+    let vote;
+
+    if (!id) {
+      return NextResponse.json({
+        success: false,
+        error: "You must be logged in to like or dislike a post",
+      });
+    }
+
+    if (!postId) {
+      return NextResponse.json({
+        success: false,
+        error: "The id of the post was not provided",
+      });
+    }
+
+    if (typeof isUpvote !== "boolean") {
+      return NextResponse.json({
+        success: false,
+        error: "Boolean value for isUpvote must be provided",
+      });
+    }
+
+    const searchVote = await prisma.vote.findFirst({
+      where: {
+        userId: id,
         postId,
-        voteType,
       },
     });
 
-    if (vote) {
-      return { success: true, message: "Vote successful" };
+    if (searchVote) {
+      vote = await prisma.vote.update({
+        where: {
+          id: searchVote.id,
+          userId: id,
+          postId,
+        },
+        data: {
+          isUpvote: isUpvote,
+        },
+      });
     } else {
-      return { success: false, error: "Failed, vote not created" };
+      vote = await prisma.vote.create({
+        data: {
+          userId: id,
+          postId,
+          isUpvote: isUpvote,
+        },
+      });
     }
+
+    return NextResponse.json({ success: true, vote });
   } catch (error) {
-    return { success: false, error: error.message };
+    return NextResponse.json({ success: false, error: error.message });
   }
 }
