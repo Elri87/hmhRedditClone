@@ -55,6 +55,7 @@ export default function CreateNewPost({ checkUser, subreddits }) {
             setSelectOption(e.target.value);
           }}
         >
+          <option value="">Choose a subreddit</option>
           {subreddits.map((subreddit) => (
             <option value={subreddit.id} key={subreddit.name}>
               r/ {subreddit.name}
@@ -88,6 +89,7 @@ export default function CreateNewPost({ checkUser, subreddits }) {
           Post
         </button>
       </div>
+      <p>{error}</p>
     </form>
   );
 }

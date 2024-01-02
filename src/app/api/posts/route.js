@@ -4,7 +4,7 @@ import { NextResponse } from "next/server.js";
 import { fetchUser } from "@/lib/fetchUser.js";
 
 //POST - api/post
-export async function POST(req, res) {
+export async function POST(request, response) {
   try {
     const { title, message, subredditId, parentId } = await request.json();
 
