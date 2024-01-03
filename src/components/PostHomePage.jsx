@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma.js";
 import { fetchUser } from "@/lib/fetchUser.js";
 import Link from "next/link.js";
 import Votes from "./Votes.jsx";
-import PostedItemButtons from "./PostedItemButtons.jsx";
+import PostHomeButtons from "./PostHomeButtons.jsx";
 import { FaUserAstronaut } from "react-icons/fa";
 
 export default async function PostHomePage() {
@@ -22,30 +22,33 @@ export default async function PostHomePage() {
   });
 
   return (
-    <section className="postHome-container">
-      <div className="postedItem-container">
-        <div>{user.id ? <Votes /> : null}</div>
-
-        {user.id ? (
-          <div>
-            {posts.map((post) => (
-              <Link
-                key={post.id}
-                href={`/subreddits/${post.subredditId}/${post.id}`}
-              >
+    <section>
+      {user.id ? (
+        <div>
+          {posts.map((post) => (
+            <Link
+              key={post.id}
+              href={`/subreddits/${post.subredditId}/${post.id}`}
+            >
+              {" "}
+              <div className="votes-container">
+                <Votes />
+              </div>
+              <div className="postedItem-container">
                 <p>
                   <FaUserAstronaut className="userAstro" />
                   Posted by u/ {post.user.username}
                 </p>
                 <h4>{post.title}</h4>
                 <p>{post.message}</p>
-              </Link>
-            ))}
-          </div>
-        ) : (
-          <p>error</p>
-        )}
-      </div>
+              </div>
+              <PostHomeButtons />
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <p>error</p>
+      )}
     </section>
   );
 }

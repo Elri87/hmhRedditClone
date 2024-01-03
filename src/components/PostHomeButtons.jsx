@@ -1,16 +1,13 @@
-import { LiaAngleUpSolid } from "react-icons/lia";
-import { LiaAngleDownSolid } from "react-icons/lia";
 import { LiaCommentAlt } from "react-icons/lia";
 import { LiaEllipsisHSolid } from "react-icons/lia";
 
-export default function ButtonsPost() {
+export default function PostHomeButtons() {
   return (
     <div className="buttons-postedItem">
-      <LiaAngleUpSolid />
-      <p>Vote</p>
-      <LiaAngleDownSolid />
       <LiaCommentAlt />
       <p>1 Comment</p>
+      <p>Share</p>
+      <p>Save</p>
       <LiaEllipsisHSolid />
     </div>
   );

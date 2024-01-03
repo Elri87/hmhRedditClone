@@ -221,27 +221,6 @@ hr {
   cursor: pointer;
 }
 
-/*POSTEDITEM*/
-
-.postedItem-container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  background-color: #f0f0f0;
-  width: 600px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
-}
-
-.buttons-postedItem {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 15px;
-}
-
 /*SUBREDDITS*/
 
 .subreddits-container {
@@ -341,8 +320,31 @@ select {
 }
 
 /*POSTHOME*/
-.postHome-container {
+.votes-container {
   display: flex;
+  flex-direction: column;
+  width: max-content;
+  align-items: center;
+  font-size: 25px;
+}
+
+.postedItem-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #f0f0f0;
+  width: 600px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.buttons-postedItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
 }
 
 /*VOTES CONTAINER*/
