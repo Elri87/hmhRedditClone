@@ -303,6 +303,7 @@ hr {
   display: flex;
   gap: 30px;
   padding: 10px;
+  width: 600px;
   align-items: center;
   background-color: #f0f0f0;
   border-radius: 5px;
@@ -314,7 +315,7 @@ hr {
 }
 
 .createPostShortCut-button {
-  width: 250px;
+  width: 150px;
   height: 35px;
   border: 1px solid #ccc;
   padding: 6px;
@@ -330,7 +331,7 @@ hr {
   flex-direction: column;
   padding: 20px;
   background-color: #f0f0f0;
-
+  width: 600px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
@@ -440,4 +441,18 @@ select {
 .userAstro {
   font-size: 25px;
   padding-right: 5px;
+}
+
+/*POSTHOME*/
+.postHome-container {
+  display: flex;
+}
+
+/*VOTES CONTAINER*/
+.votes-container {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  align-items: center;
+  font-size: 25px;
 }

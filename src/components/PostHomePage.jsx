@@ -1,8 +1,7 @@
 import { prisma } from "@/lib/prisma.js";
 import { fetchUser } from "@/lib/fetchUser.js";
-//import { useState } from "react";
-//import { useRouter } from "next/navigation.js";
-
+import Link from "next/link.js";
+import Votes from "./Votes.jsx";
 import PostedItemButtons from "./PostedItemButtons.jsx";
 import { FaUserAstronaut } from "react-icons/fa";
 
@@ -23,26 +22,30 @@ export default async function PostHomePage() {
   });
 
   return (
-    <section className="postedItem-container">
-      {user.id ? (
-        <h1>
-          Welcome
-          <span> {user.username}</span>
-        </h1>
-      ) : (
-        <h1>Welcome, please log in</h1>
-      )}
-      {user.id ? <h5>Some buttons</h5> : null}
-      {user.id ? <h4>Your Posts</h4> : null}
-      {user.id ? (
-        <div>
-          {posts.map((listPosts) => (
-            <h3>{listPosts.message}</h3>
-          ))}
-        </div>
-      ) : (
-        <p>error</p>
-      )}
+    <section className="postHome-container">
+      <div className="postedItem-container">
+        <div>{user.id ? <Votes /> : null}</div>
+
+        {user.id ? (
+          <div>
+            {posts.map((post) => (
+              <Link
+                key={post.id}
+                href={`/subreddits/${post.subredditId}/${post.id}`}
+              >
+                <p>
+                  <FaUserAstronaut className="userAstro" />
+                  Posted by u/ {post.user.username}
+                </p>
+                <h4>{post.title}</h4>
+                <p>{post.message}</p>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p>error</p>
+        )}
+      </div>
     </section>
   );
 }
@@ -54,7 +57,7 @@ export default async function PostHomePage() {
 /*<div>
         <p>
           <FaUserAstronaut className="userAstro" />
-          Posted by u/ {}
+          Posted by u/
         </p>
         <h1>Post.title</h1>
         <p>Post.message</p>
