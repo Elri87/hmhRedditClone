@@ -11,7 +11,7 @@ export default async function createPost() {
     },
   });
 
-  console.log(subreddits);
+  //console.log(subreddits);
 
   return (
     <section>

@@ -24,7 +24,7 @@ export default function Login() {
     if (info.error) {
       return setError(info.error);
     }
-    console.log(info);
+    //console.log(info);
     router.push("/");
     router.refresh();
   }

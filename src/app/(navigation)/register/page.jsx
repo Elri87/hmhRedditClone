@@ -15,7 +15,7 @@ export default function Register() {
 
   async function handleRegister(e) {
     e.preventDefault();
-    console.log(username, password);
+    //console.log(username, password);
     //send a rewuest to the server
     //api/users/register
     const response = await fetch("/api/users/register", {
@@ -27,7 +27,7 @@ export default function Register() {
     if (info.error) {
       return setError(info.error);
     }
-    console.log(info);
+    //console.log(info);
     router.push("/");
     router.refresh();
   }
