@@ -5,7 +5,6 @@ import headerLogo from "../assets/img/flower.png";
 export default function Header() {
   return (
     <div>
-      <div className="header-gray"></div>
       <div className="header">
         <Image className="header-logo" src={headerLogo} alt="HackMyHead Logo" />
 
