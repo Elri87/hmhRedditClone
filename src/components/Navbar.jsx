@@ -6,6 +6,8 @@ import Logout from "./Logout.jsx";
 import Image from "next/image.js";
 import redditLogo from "../assets/img/redditRoundLogo.png";
 
+import { FaHome } from "react-icons/fa";
+
 export default async function Navbar() {
   const user = await fetchUser();
 
@@ -17,6 +19,7 @@ export default async function Navbar() {
         <Link href={"/"}>
           <Image className="redditLogo" src={redditLogo} alt="Reddit Logo" />
         </Link>
+        <FaHome className="homeIcon" />
       </div>
 
       <div className="search-bar">
@@ -32,7 +35,6 @@ export default async function Navbar() {
         )}
         {user.id && (
           <>
-            <span>Welcome {user.username}</span>
             <Logout />
           </>
         )}
@@ -40,15 +42,3 @@ export default async function Navbar() {
     </div>
   );
 }
-
-//NAVBAR REDDIT
-/*<div className="navbar-reddit">
-      <p>Reddit</p>
-      <p>img</p>
-      <p>*</p>
-      <p>Search</p>
-      </div>*/
-
-//if user is loged in, they have a valid token in the cookie, I want to say //welcome. Create function in lib fetchUser.js
-
-//<Image className="redditLogo" src={hmhLogo} alt="HackMyHead Logo" />
