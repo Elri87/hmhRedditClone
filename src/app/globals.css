@@ -339,15 +339,26 @@ select {
   margin-top: 10px;
 }
 
-.editDeleteButton {
-  display: flex;
-  gap: 10px;
-}
-
 .buttons-postedItem {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   gap: 15px;
+}
+
+/*MAINPOST*/
+
+.mainPost-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 600px;
+}
+
+.editDeleteButton {
+  display: flex;
+  gap: 10px;
 }

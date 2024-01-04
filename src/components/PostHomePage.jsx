@@ -35,19 +35,20 @@ export default async function PostHomePage() {
               href={`/subreddits/${post.subredditId}/${post.id}`}
             >
               {" "}
-              <div className="votes-container">
-                <Votes />
-              </div>
               <div className="postedItem-container">
+                <div className="votes-container">
+                  <Votes />
+                </div>
                 <p>
                   <FaUserAstronaut className="userAstro" />
                   Posted by u/ {post.user.username}
                 </p>
                 <h4>{post.title}</h4>
                 <p>{post.message}</p>
-                <div className="editDeleteButton"></div>
+                <div>
+                  <PostHomeButtons />
+                </div>
               </div>
-              <PostHomeButtons />
             </Link>
           ))}
         </div>

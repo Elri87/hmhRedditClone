@@ -4,8 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation.js";
 
 import { FaEdit } from "react-icons/fa";
+import { FaUserAstronaut } from "react-icons/fa";
 
-export default function DeleteEditButton({ post, subreddit }) {
+export default function MainPost({ post, user, subreddit }) {
   const [edit, setEdit] = useState(false);
   const [title, setTitle] = useState(post.title);
   const [message, setMessage] = useState(post.message);
@@ -45,11 +46,23 @@ export default function DeleteEditButton({ post, subreddit }) {
   }
 
   return (
-    <div>
-      <button onClick={handleEdit}>
-        <FaEdit />
-      </button>
-      <button onClick={handleDeletePost}>Delete</button>
+    <div className="mainPost-container">
+      <div>
+        <h5>
+          <FaUserAstronaut className="userAstro" />
+          Posted by u/ {post.user.username}
+        </h5>
+      </div>
+      <div>
+        <h1>{post.title}</h1>
+        <p>{post.message}</p>
+      </div>
+      <div className="editDeleteButton">
+        <button onClick={handleEdit}>
+          <FaEdit />
+        </button>
+        <button onClick={handleDeletePost}>Delete</button>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma.js";
 import { fetchUser } from "@/lib/fetchUser.js";
 
-import DeleteEdit from "@/components/DeleteEditButton.jsx";
+import MainPost from "@/components/MainPost.jsx";
 import CreateComment from "@/components/CreateComment.jsx";
 
 export default async function PostAndComments({ params }) {
@@ -45,7 +45,8 @@ export default async function PostAndComments({ params }) {
   return (
     <section>
       <h1>r/ {mainPost.subreddit.name}</h1>
-      <DeleteEdit post={mainPost} subredditId={subredditId} />
+
+      <MainPost post={mainPost} subredditId={subredditId} />
       <CreateComment user={user} subredditId={subredditId} post={mainPost} />
     </section>
   );
