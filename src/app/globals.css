@@ -356,9 +356,37 @@ select {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
   width: 600px;
+  padding: 10px;
 }
 
 .editDeleteButton {
   display: flex;
-  gap: 10px;
+  gap: 20px;
+  align-items: center;
+  margin: 10px;
+}
+
+.editButton {
+  background-color: white;
+  border: none;
+  width: 20px;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  font-size: 30px;
+}
+
+.deleteButton {
+  width: 40px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border: 1px solid #8d8c8c;
+  width: 100px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.deleteButton :hover {
+  background-color: red;
 }
