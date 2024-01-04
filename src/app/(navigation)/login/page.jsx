@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image.js";
-import logo from "../../../assets/img/flower.png";
+import redditLogo from "../../../assets/img/redditRoundLogo.png";
 
 import { useRouter } from "next/navigation.js";
 
@@ -30,7 +30,7 @@ export default function Login() {
   }
   return (
     <div className="register-container">
-      <Image src={logo} alt="reddit logo" className="authLogo" />
+      <Image src={redditLogo} alt="reddit logo" className="authLogo" />
       <form onSubmit={handleLogin}>
         <input
           value={username}

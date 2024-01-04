@@ -1,7 +1,11 @@
+//show post on home page, edit & delete post buttons
+
 import { prisma } from "@/lib/prisma.js";
 import { fetchUser } from "@/lib/fetchUser.js";
+
 import Link from "next/link.js";
 import Votes from "./Votes.jsx";
+
 import PostHomeButtons from "./PostHomeButtons.jsx";
 import { FaUserAstronaut } from "react-icons/fa";
 
@@ -41,6 +45,7 @@ export default async function PostHomePage() {
                 </p>
                 <h4>{post.title}</h4>
                 <p>{post.message}</p>
+                <div className="editDeleteButton"></div>
               </div>
               <PostHomeButtons />
             </Link>

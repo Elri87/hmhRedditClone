@@ -339,6 +339,11 @@ select {
   margin-top: 10px;
 }
 
+.editDeleteButton {
+  display: flex;
+  gap: 10px;
+}
+
 .buttons-postedItem {
   display: flex;
   flex-direction: row;
