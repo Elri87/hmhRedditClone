@@ -18,7 +18,7 @@ export async function POST(request, response) {
     if (!subredditId) {
       return NextResponse.json({
         success: false,
-        error: "You did not provide a subreddit to post",
+        error: "You did not provide a subreddit to post to",
       });
     }
 

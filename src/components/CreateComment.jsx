@@ -27,6 +27,7 @@ export default function({ post, user, subredditId }) {
 
       const data = await res.json();
 
+      console.log(data);
       if (data.error) {
         return setError(data.error);
       }
@@ -44,7 +45,7 @@ export default function({ post, user, subredditId }) {
         <div>
           <p>Comment as {user.username}</p>
           <textarea
-            placeholder="Comment here"
+            placeholder="What are your thoughts?"
             value={text}
             onChange={(e) => {
               setText(e.target.value);

@@ -3,6 +3,7 @@ import { fetchUser } from "@/lib/fetchUser.js";
 
 import MainPost from "@/components/MainPost.jsx";
 import CreateComment from "@/components/CreateComment.jsx";
+import CommentSection from "@/components/CommentSection.jsx";
 
 export default async function PostAndComments({ params }) {
   const { subredditId, postId } = params;
@@ -60,6 +61,7 @@ export default async function PostAndComments({ params }) {
         subreddit={mainPost.subreddit}
         checkUser={checkUser}
       />
+      <CommentSection user={user} post={mainPost} />
     </section>
   );
 }
