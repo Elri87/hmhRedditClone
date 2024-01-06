@@ -46,8 +46,20 @@ export default async function PostAndComments({ params }) {
     <section>
       <h1>r/ {mainPost.subreddit.name}</h1>
 
-      <MainPost post={mainPost} subredditId={subredditId} user={user} />
-      <CreateComment user={user} subredditId={subredditId} post={mainPost} />
+      <MainPost
+        post={mainPost}
+        subredditId={subredditId}
+        user={user}
+        subreddit={mainPost.subreddit}
+        checkUser={checkUser}
+      />
+      <CreateComment
+        user={user}
+        subredditId={subredditId}
+        post={mainPost}
+        subreddit={mainPost.subreddit}
+        checkUser={checkUser}
+      />
     </section>
   );
 }

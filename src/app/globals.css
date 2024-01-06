@@ -251,6 +251,19 @@ hr {
   width: 300px;
 }
 
+.subredditId-Maincontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #8d8c8c;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  gap: 20px;
+}
+
 /*CREATE SUBREDDIT CONTAINER*/
 .create-sub-container {
   display: flex;
@@ -389,4 +402,17 @@ select {
 
 .deleteButton :hover {
   background-color: red;
+}
+
+/*CREATE COMMENT*/
+
+.createComment-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 600px;
+  padding: 10px;
 }

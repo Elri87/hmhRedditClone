@@ -19,10 +19,13 @@ export default async function Subreddit({ params }) {
   });
 
   return (
-    <div>
+    <div className="subredditId-Maincontainer">
       <h3>{subreddit.name}</h3>
       {posts.map((post) => (
         <div>{post.title}</div>
+      ))}
+      {posts.map((message) => (
+        <div>{message.message}</div>
       ))}
     </div>
   );
