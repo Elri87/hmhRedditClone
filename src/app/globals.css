@@ -335,7 +335,7 @@ select {
 /*POSTHOME*/
 .votes-container {
   display: flex;
-  flex-direction: column;
+  gap: 15px;
   width: max-content;
   align-items: center;
   font-size: 25px;
@@ -402,6 +402,38 @@ select {
 
 .deleteButton :hover {
   background-color: red;
+}
+
+.editPostForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  gap: 30px;
+  width: 400px;
+}
+
+.titleEditBox {
+  width: 300px;
+}
+
+.postEditBox {
+  width: 350px;
+  height: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.saveButton {
+  width: 40px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border: 1px solid #8d8c8c;
+  width: 100px;
+  height: 25px;
+  cursor: pointer;
 }
 
 /*CREATE COMMENT*/

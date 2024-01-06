@@ -1,73 +1,50 @@
-"use client";
-//This section is to show comments on ui when clicked on a post, then to edit a comment or delete a comment
+//Display comments
+import { prisma } from "@/lib/prisma.js";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation.js";
+import { FaUserAstronaut } from "react-icons/fa";
 
-export default function CommentSection({ post, user, subredditId, checkUser }) {
-  const [isEditting, setIsEditting] = useState(false);
-  const [editContent, setEditContent] = useState(post.message);
-  const [errorEdit, setErrorEdit] = useState("");
+export default async function CommentSection({ comment, user, subredditId }) {
+  let checkUser;
 
-  const router = useRouter();
+  /*const replies = await prisma.post.findMany({
+    where: {
+      parentId: comment.id,
+    },
+    include: {
+      user: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
 
-  //conditional statement inside div so that edit box only shows when Edit button is clicked
-  function handleShowEdit() {
-    if (!isEditting) {
-      setIsEditting(true);
-    } else {
-      setIsEditting(false);
-      setErrorEdit("");
-    }
-  }
-
-  async function handleSubmitEdit(e) {
-    e.preventDefault();
-
-    //fetch to PUT changes when edit
-    const res = await fetch(`/api/posts/${post.id}`, {
-      method: "PUT",
-      body: JSON.stringify({
-        message: editContent,
-      }),
+  if (user.id) {
+    checkUser = await prisma.vote.findFirst({
+      where: {
+        postId: comment.id,
+        userId: user.id,
+      },
     });
+  }*/
 
-    const data = await res.json();
+  const comments = await prisma.post.findMany({
+    where: {
+      parentId: postId,
+    },
+    include: {
+      children: true,
+    },
+  });
 
-    if (data.error) {
-      return setErrorEdit(data.error);
-    }
-
-    setIsEditting(false);
-    setErrorEdit("");
-    router.refresh();
-  }
-
-  return (
-    <div>
-      <div className="comment-section">
-        {!isEditting ? (
-          <div>
-            <p>{post.message}</p>
-            <button onClick={handleShowEdit}>Edit post</button>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmitEdit}>
-            <textarea
-              value={editContent}
-              onChange={(e) => {
-                setEditContent(e.target.value);
-              }}
-            ></textarea>
-            <button type="submit">Submit Changes</button>
-            <p>{errorEdit}</p>
-          </form>
-        )}
-        <div>
-          <button>Reply</button>
-          {user.id === post.userId ? <button>Delete</button> : null}
-        </div>
-      </div>
-    </div>
-  );
+  return;
+  <div>
+    <h1>Testssss</h1>
+    <h5>
+      <FaUserAstronaut className="userAstro" />
+      Posted by u/ {comment.user.username}
+    </h5>
+    {replies.map((reply) => {
+      reply.id;
+    })}
+  </div>;
 }

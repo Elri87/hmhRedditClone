@@ -1,4 +1,4 @@
-//Delete & edit button for comments
+//This shows the username, title, post & votes. Functionality is the edit & delete of post
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation.js";
@@ -61,25 +61,31 @@ export default function MainPost({ post, user, subreddit }) {
               <p>{post.message}</p>
             </>
           ) : (
-            <form onSubmit={handleEditPost}>
-              <input
-                value={title}
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
-                type="text"
-                placeholder="Title"
-              />
-              <textarea
-                value={message}
-                onChange={(e) => {
-                  setMessage(e.target.value);
-                }}
-                placeholder="Message"
-              ></textarea>
-              <button type="submit">Submit Change</button>
-              <p>{error}</p>
-            </form>
+            <div>
+              <form onSubmit={handleEditPost} className="editPostForm">
+                <input
+                  className="titleEditBox"
+                  value={title}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                  }}
+                  type="text"
+                  placeholder="Title"
+                />
+                <textarea
+                  className="postEditBox"
+                  value={message}
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                  }}
+                  placeholder="Message"
+                ></textarea>
+                <button type="submit" className="saveButton">
+                  Save
+                </button>
+                <p>{error}</p>
+              </form>
+            </div>
           )}
         </div>
       </div>
@@ -99,25 +105,3 @@ export default function MainPost({ post, user, subreddit }) {
     </div>
   );
 }
-
-/*<div className="mainPost-container">
-      <div>
-        <h5>
-          <FaUserAstronaut className="userAstro" />
-          Posted by u/ {post.user.username}
-        </h5>
-        
-      </div>
-      <div>
-        <h1>{post.title}</h1>
-        <p>{post.message}</p>
-      </div>
-      <div className="editDeleteButton">
-        <button onClick={handleEdit} className="editButton">
-          <FaEdit />
-        </button>
-        <button onClick={handleDeletePost} className="deleteButton">
-          Delete
-        </button>
-      </div>
-    </div>*/

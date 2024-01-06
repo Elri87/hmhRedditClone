@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma.js";
+import { fetchUser } from "@/lib/fetchUser.js";
 
 export default async function Subreddit({ params }) {
   //how do i access the posts associated with this subreddit
@@ -6,15 +7,24 @@ export default async function Subreddit({ params }) {
 
   //subredsit name as title
   const { subredditId } = params;
+  const votes = await prisma.vote.findMany();
+  const user = await fetchUser();
+
   const subreddit = await prisma.subreddit.findFirst({
     where: { id: subredditId },
   });
-  console.log(subreddit);
+  //console.log(subreddit);
 
   const posts = await prisma.post.findMany({
     where: {
       subredditId,
       parentId: null,
+    },
+    include: {
+      user: true,
+    },
+    orderBy: {
+      createdAt: "desc",
     },
   });
 
