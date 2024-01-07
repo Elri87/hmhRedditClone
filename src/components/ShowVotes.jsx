@@ -1,3 +1,4 @@
+"use client";
 import { prisma } from "@/lib/prisma.js";
 import Link from "next/link.js";
 

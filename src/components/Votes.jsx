@@ -13,6 +13,15 @@ export default function Votes({ votes, post, user, checkUser }) {
   const [error, setError] = useState("");
 
   const router = useRouter();
+  //console.log(user);
+
+  //one user can't upvote twice
+  useEffect(() => {
+    if (checkUser) {
+      setVoted(checkUser.isUpvoted);
+    }
+    router.refresh();
+  }, []);
 
   async function handleUpvote() {
     if (user.id) {
@@ -23,6 +32,7 @@ export default function Votes({ votes, post, user, checkUser }) {
           isUpvote: true,
         }),
       });
+
       let i;
 
       if (voted === true) {
@@ -75,14 +85,6 @@ export default function Votes({ votes, post, user, checkUser }) {
     }
   }
 
-  //one user can't upvote twice
-  useEffect(() => {
-    if (checkUser) {
-      setVoted(checkUser.isUpvoted);
-    }
-    router.refresh();
-  }, []);
-
   return (
     <>
       <button onClick={handleUpvote} className="arrow">
@@ -92,6 +94,8 @@ export default function Votes({ votes, post, user, checkUser }) {
       <button onClick={handleDownVote} className="arrow">
         <TiArrowDownThick />
       </button>
+
+      <p>{error}</p>
     </>
   );
 }

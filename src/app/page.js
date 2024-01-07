@@ -3,6 +3,7 @@ import Header from "@/components/Header.jsx";
 import CreatePostShortCut from "@/components/CreatePostShortCut.jsx";
 import PostHomePage from "@/components/PostHomePage.jsx";
 //import CreateNewPost from "@/components/CreateNewPost.jsx";
+export const dynamic = "force-dynamic";
 
 export default function Home() {
   return (

@@ -54,6 +54,7 @@ export default async function PostAndComments({ params }) {
         user={user}
         subreddit={mainPost.subreddit}
         checkUser={checkUser}
+        votes={votes}
       />
       <CreateComment
         user={user}

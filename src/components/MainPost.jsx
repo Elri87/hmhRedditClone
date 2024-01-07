@@ -7,6 +7,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaUserAstronaut } from "react-icons/fa";
 
 import Votes from "./Votes.jsx";
+import ShowVotes from "./ShowVotes.jsx";
 
 export default function MainPost({ post, user, subreddit }) {
   const [edit, setEdit] = useState(false);
@@ -89,9 +90,7 @@ export default function MainPost({ post, user, subreddit }) {
           )}
         </div>
       </div>
-      <div className="votes-mainPost">
-        <Votes />
-      </div>
+      <div className="votes-mainPost"></div>
       {user.id === post.user.id ? (
         <div className="editDeleteButton">
           <button onClick={handleEdit} className="editButton">
