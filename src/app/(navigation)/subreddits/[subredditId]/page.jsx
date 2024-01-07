@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma.js";
 import { fetchUser } from "@/lib/fetchUser.js";
 
+import Votes from "@/components/Votes.jsx";
+
 export default async function Subreddit({ params }) {
   //how do i access the posts associated with this subreddit
   //how do I access that parameter?
@@ -30,12 +32,22 @@ export default async function Subreddit({ params }) {
 
   return (
     <div className="subredditId-Maincontainer">
-      <h3>{subreddit.name}</h3>
-      {posts.map((post) => (
-        <div>{post.title}</div>
-      ))}
+      <h2>{subreddit.name}</h2>
+      <div>
+        {posts.map((post) => (
+          <h4>{post.title}</h4>
+        ))}
+      </div>
       {posts.map((message) => (
-        <div>{message.message}</div>
+        <div>
+          {message.message}
+          <Votes
+            votes={getVotes}
+            user={user}
+            post={posts}
+            checkUser={checkUser}
+          />
+        </div>
       ))}
     </div>
   );

@@ -341,6 +341,7 @@ select {
 /*POSTHOME*/
 .votes-container {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 15px;
@@ -352,6 +353,12 @@ select {
   font-size: 25px;
   align-items: center;
   justify-content: center;
+}
+
+.votes-mainPost {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
 .postedItem-container {

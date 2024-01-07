@@ -14,14 +14,6 @@ export default function Votes({ votes, post, user, checkUser }) {
 
   const router = useRouter();
 
-  //one user can't upvote twice
-  useEffect(() => {
-    if (checkUser) {
-      setVoted(checkUser.isUpvoted);
-    }
-    router.refresh();
-  }, []);
-
   async function handleUpvote() {
     if (user.id) {
       await fetch("/api/votes", {
@@ -82,6 +74,14 @@ export default function Votes({ votes, post, user, checkUser }) {
       setError("You need to login to down vote");
     }
   }
+
+  //one user can't upvote twice
+  useEffect(() => {
+    if (checkUser) {
+      setVoted(checkUser.isUpvoted);
+    }
+    router.refresh();
+  }, []);
 
   return (
     <>

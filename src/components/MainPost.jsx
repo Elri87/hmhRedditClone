@@ -89,7 +89,7 @@ export default function MainPost({ post, user, subreddit }) {
           )}
         </div>
       </div>
-      <div>
+      <div className="votes-mainPost">
         <Votes />
       </div>
       {user.id === post.user.id ? (

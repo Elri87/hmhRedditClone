@@ -1,7 +1,7 @@
+//component to show amount of comments
+
 import { LiaCommentAlt } from "react-icons/lia";
 import { LiaEllipsisHSolid } from "react-icons/lia";
-
-import Link from "next/link.js";
 
 export default function PostHomeButtons() {
   return (
