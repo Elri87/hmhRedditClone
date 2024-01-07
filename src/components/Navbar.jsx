@@ -15,7 +15,7 @@ export default async function Navbar() {
 
   return (
     <div className="navbar">
-      <div>
+      <div className="navLeft">
         <Link href={"/"}>
           <Image className="redditLogo" src={redditLogo} alt="Reddit Logo" />
         </Link>

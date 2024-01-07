@@ -85,11 +85,11 @@ export default function Votes({ votes, post, user, checkUser }) {
 
   return (
     <>
-      <button onClick={handleUpvote}>
+      <button onClick={handleUpvote} className="arrow">
         <TiArrowUpThick />
       </button>
       <p>{likes}</p>
-      <button onClick={handleDownVote}>
+      <button onClick={handleDownVote} className="arrow">
         <TiArrowDownThick />
       </button>
     </>
