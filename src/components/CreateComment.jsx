@@ -3,7 +3,16 @@
 import { useRouter } from "next/navigation.js";
 import { useState } from "react";
 
-export default function({ post, user, subredditId }) {
+import CommentSection from "./CommentSection.jsx";
+
+export default function({
+  post,
+  user,
+  subredditId,
+  comment,
+  votes,
+  checkUser,
+}) {
   const [text, setText] = useState("");
   const [error, setError] = useState("");
 
@@ -54,9 +63,21 @@ export default function({ post, user, subredditId }) {
         </div>
         <div>
           <p>{error}</p>
-          <button type="submit">Comment</button>
+          <button type="submit">Submit Comment</button>
         </div>
       </form>
+      <div>
+        <p>Comments should go here</p>
+        <CommentSection
+          user={user}
+          votes={votes}
+          post={comment}
+          checkUser={checkUser}
+          subredditId={subredditId}
+        />
+      </div>
     </div>
   );
 }
+
+//<CommentSection user={user} comment={comment} post={post} />

@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma.js";
 import { fetchUser } from "@/lib/fetchUser.js";
 
-import Votes from "@/components/Votes.jsx";
+import Link from "next/link.js";
 
 export default async function Subreddit({ params }) {
   //how do i access the posts associated with this subreddit
@@ -39,16 +39,9 @@ export default async function Subreddit({ params }) {
         ))}
       </div>
       {posts.map((message) => (
-        <div>
-          {message.message}
-          <Votes
-            votes={getVotes}
-            user={user}
-            post={posts}
-            checkUser={checkUser}
-          />
-        </div>
+        <div>{message.message}</div>
       ))}
+      <Link key={subreddit.id} href={`/subreddits/${subreddit.id}`}></Link>
     </div>
   );
 }

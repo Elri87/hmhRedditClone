@@ -1,50 +1,81 @@
-//Display comments
-import { prisma } from "@/lib/prisma.js";
+"use client";
+import { useRouter } from "next/navigation.js";
+import { useState } from "react";
 
-import { FaUserAstronaut } from "react-icons/fa";
+export default function CommentSection({ post }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editValue, setEditValue] = useState(post);
+  const [editError, setEditError] = useState("");
 
-export default async function CommentSection({ comment, user, subredditId }) {
-  let checkUser;
+  const router = useRouter();
 
-  /*const replies = await prisma.post.findMany({
-    where: {
-      parentId: comment.id,
-    },
-    include: {
-      user: true,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  function handleShowEdit() {
+    if (!isEditing) {
+      setIsEditing(true);
+    } else {
+      setIsEditing(false);
+      setEditError("");
+    }
+  }
 
-  if (user.id) {
-    checkUser = await prisma.vote.findFirst({
-      where: {
-        postId: comment.id,
-        userId: user.id,
-      },
+  async function handleSubmitEdit(e) {
+    e.preventDefault();
+
+    const res = await fetch(`/api/posts/${post.id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        message: editValue,
+      }),
     });
-  }*/
 
-  const comments = await prisma.post.findMany({
-    where: {
-      parentId: postId,
-    },
-    include: {
-      children: true,
-    },
-  });
+    const data = await res.json();
 
-  return;
-  <div>
-    <h1>Testssss</h1>
-    <h5>
-      <FaUserAstronaut className="userAstro" />
-      Posted by u/ {comment.user.username}
-    </h5>
-    {replies.map((reply) => {
-      reply.id;
-    })}
-  </div>;
+    if (data.error) {
+      return setEditError(data.error);
+    }
+
+    setIsEditing(false);
+    setEditError("");
+    router.refresh();
+  }
+
+  //const getVotes = getNumberOfVotes(post.id, votes);
+
+  return (
+    <div className="">
+      <div className="">
+        <p>{post}</p>
+
+        <form className="" onSubmit={handleSubmitEdit}>
+          <textarea
+            className=""
+            value={editValue}
+            onChange={(e) => {
+              setEditValue(e.target.value);
+            }}
+          ></textarea>
+          <button type="submit" className="">
+            Submit Changes
+          </button>
+          <p className="">{editError}</p>
+        </form>
+
+        <div className="vote-button">
+          <div className="">Reply</div>
+
+          <div className="" onClick={handleShowEdit}>
+            <p>Edit</p>
+          </div>
+        </div>
+
+        <form className="">
+          <textarea className="" placeholder="reply here..."></textarea>
+          <button type="submit" className="">
+            Reply
+          </button>
+          <p className="">{editError}</p>
+        </form>
+      </div>
+    </div>
+  );
 }
